@@ -35,7 +35,7 @@
             </div>
         </section>
 
-        <section class="summary">
+        <section class="summary" v-if="total()>0">
             <strong>Resumo do pedido</strong>
             <table>
                 <thead>
@@ -45,14 +45,16 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td>1x Big Mac</td>
-                        <td>5.99</td>
+                    <tr v-for="product in products">
+                        <template v-if="product.active">
+                            <td>{{product.quantity + 'x' + product.name}}</td>
+                            <td>{{(product.quantity * product.price).toFixed(2)}}</td>
+                        </template>
                     </tr>
 
                     <tr>
                         <th>Total</th>
-                        <th>5.99</th>
+                        <th>{{total()}}</th>
                     </tr>
                 </tbody>
             </table>
