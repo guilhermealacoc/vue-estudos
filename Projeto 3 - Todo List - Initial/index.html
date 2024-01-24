@@ -20,16 +20,16 @@
 
             <h3>Lista de Tarefas</h3>
 
-            <div class="all-todos" v-for="task in tasks">
-                <div class="single-todo" @click="task.completed = !task.completed" :class="{ done: task.completed }">
+            <div class="all-todos">
+                <div v-for="task in tasks" class="single-todo" @click="task.completed = !task.completed" :class="{ done: task.completed }">
                     <p>{{task.currentTask}}</p>
                 </div>
             </div>
 
-            <button class="clear" @click="clearTasks">Limpar tudo</button>
+            <button class="clear" @click="tasks=[]" v-if="tasks.length">Limpar tudo</button>
 
-            <input type="text" placeholder="Escreva uma nova tarefa...">
-            <button class="add">Adicionar</button>
+            <input type="text" placeholder="Escreva uma nova tarefa..." v-model="newTask.currentTask">
+            <button class="add" @click="addTask()">Adicionar</button>
 
             <div class="instructions">
                 Instruções:

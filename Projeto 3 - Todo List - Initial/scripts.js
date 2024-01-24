@@ -1,28 +1,22 @@
-tasks = [
-  { currentTask: "Estudar Vue.js", completed: false },
-  { currentTask: "Estudar Testes", completed: false },
-  { currentTask: "Estudar React", completed: false },
-  { currentTask: "Estudar PHP", completed: false },
-];
-
 const handlingForms = {
   data() {
     return {
-      tasks: window.tasks,
-      newTask: {},
+      tasks: [],
+      newTask: {
+        completed: false,
+      },
     };
   },
-  method: {
-    addTask() {
+  methods: {
+    addTask: function () {
       if (!this.newTask.currentTask) {
         alert("Preencha a tarefa a ser adicionada!");
         return;
       }
       this.tasks.push(this.newTask);
-      this.newTask = {};
-    },
-    clearTasks() {
-      this.tasks = [];
+      this.newTask = {
+        completed: false,
+      };
     },
   },
 };
