@@ -19,7 +19,18 @@ const handlingForms = {
       };
       localStorage.setItem("tasks", JSON.stringify(this.tasks));
     },
+    storeTasks() {
+      localStorage.setItem("tasks", JSON.stringify(this.tasks));
+    },
   },
+  created() {
+    this.tasks = localStorage.getItem("tasks")
+      ? JSON.parse(localStorage.getItem("tasks"))
+      : this.tasks;
+  },
+  // updated() {
+  //   localStorage.setItem("tasks", JSON.stringify(this.tasks));
+  // },
 };
 
 Vue.createApp(handlingForms).mount("#app");
