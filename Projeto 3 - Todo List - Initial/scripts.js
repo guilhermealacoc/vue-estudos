@@ -17,6 +17,7 @@ const handlingForms = {
       this.newTask = {
         completed: false,
       };
+      localStorage.setItem("tasks", JSON.stringify(this.tasks));
     },
   },
 };
